@@ -11,15 +11,22 @@ export default function ContactSection() {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
-
+  const [error, setError] = useState(false);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
 
     setSending(true);
+    setError(false);
+    
     // @ts-ignore
-    const envEndpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT;
-    const endpoint = envEndpoint || "https://formspree.io/f/karthikch834@gmail.com";
+    const endpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT;
+
+    if (!endpoint) {
+      setError(true);
+      setSending(false);
+      return;
+    }
 
     try {
       const response = await fetch(endpoint, {
@@ -35,18 +42,15 @@ export default function ContactSection() {
           message: formData.message
         })
       });
-      if (response.ok) {
+      if (response.ok === true) {
         setSent(true);
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
-        // Graceful fallback for preview window
-        setSent(true);
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setError(true);
       }
     } catch (err) {
-      // Fallback
-      setSent(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      console.error(err);
+      setError(true);
     } finally {
       setSending(false);
     }
@@ -159,7 +163,7 @@ export default function ContactSection() {
                 <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h3 className="text-xl font-sans font-bold text-neutral-105">Message Logged!</h3>
+                <h3 className="text-xl font-sans font-bold text-neutral-105">✅ Message sent successfully!</h3>
                 <p className="text-xs text-neutral-400 max-w-sm leading-relaxed">
                   Thanks for getting in touch. Karthik will check the message inbox and reach out to you at the email address provided shortly.
                 </p>
@@ -227,13 +231,19 @@ export default function ContactSection() {
                   />
                 </div>
 
+                {error && (
+                  <div className="text-red-500 text-sm font-semibold text-center py-2">
+                    ❌ Failed to send message.
+                  </div>
+                )}
+
                 <button
                   type="submit"
                   disabled={sending}
                   className="w-full py-3 px-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-neutral-950 font-bold font-sans text-xs uppercase tracking-wider rounded-xl flex items-center justify-center space-x-2 hover:opacity-95 duration-100 disabled:opacity-50 cursor-pointer"
                 >
                   <Send className="w-4 h-4" />
-                  <span>{sending ? 'Transmitting...' : 'Submit Message'}</span>
+                  <span>{sending ? 'Sending...' : 'Send Message'}</span>
                 </button>
               </form>
             )}
