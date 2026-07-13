@@ -82,7 +82,7 @@ export default function SkillsShowcase() {
             return (
               <button
                 key={tab.id}
-                onClick={() => setActiveCategory(tab.id as any)}
+                onClick={() => setActiveCategory(tab.id as 'all' | 'mobile' | 'backend' | 'security' | 'tools')}
                 className={`flex items-center space-x-1.5 px-4 py-2 text-xs font-semibold rounded-xl border transition-all duration-150 cursor-pointer ${
                   works
                     ? 'bg-emerald-500 border-emerald-500 text-neutral-950 shadow-md shadow-emerald-500/10'

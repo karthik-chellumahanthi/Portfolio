@@ -114,14 +114,13 @@ export default function Hero() {
                 <div className="w-2 h-2 bg-emerald-400 rounded-full animate-ping" />
               </div>
 
-              {/* Monogram Frame (No photos, purely professional vector tech emblem) */}
-              <div className="absolute inset-6 rounded-full overflow-hidden border border-neutral-850 bg-[#0d0d10] flex flex-col items-center justify-center shadow-2xl shadow-black/80 group">
-                <div className="text-6xl font-display font-black tracking-tighter bg-gradient-to-tr from-emerald-400 via-teal-300 to-emerald-500 bg-clip-text text-transparent group-hover:scale-105 duration-300 ease-in-out select-none">
-                  CK
-                </div>
-                <div className="text-[9px] font-mono text-neutral-500 uppercase tracking-widest mt-3 px-3 py-0.5 bg-neutral-950/80 border border-neutral-900 rounded-full select-none">
-                  SECURE DEV
-                </div>
+              {/* Profile Image Frame */}
+              <div className="absolute inset-6 rounded-full overflow-hidden border-2 border-emerald-500/50 bg-[#0d0d10] flex items-center justify-center shadow-2xl shadow-black/80 group">
+                <img 
+                  src="/profile.jpg" 
+                  alt="Karthik Ch" 
+                  className="w-full h-full object-cover object-[center_15%] transition-transform duration-500 group-hover:scale-110"
+                />
               </div>
 
               {/* Mini tech overlay badges */}

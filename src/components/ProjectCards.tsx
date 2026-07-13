@@ -113,13 +113,15 @@ export default function ProjectCards() {
                     <Code2 className="w-3.5 h-3.5" />
                     <span>View GitHub</span>
                   </a>
-                  <button
-                    onClick={() => triggerScroll(selectedProj.id === 'student_notes' ? 'simulator' : 'chatbot')}
-                    className="flex items-center space-x-1 py-1.5 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-neutral-950 text-xs font-semibold select-none cursor-pointer duration-200"
-                  >
-                    <Link2 className="w-3.5 h-3.5" />
-                    <span>Launch Simulator</span>
-                  </button>
+                  {['student_notes', 'price_prediction'].includes(selectedProj.id) && (
+                    <button
+                      onClick={() => triggerScroll(selectedProj.id === 'student_notes' ? 'simulator' : 'chatbot')}
+                      className="flex items-center space-x-1 py-1.5 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-neutral-950 text-xs font-semibold select-none cursor-pointer duration-200"
+                    >
+                      <Link2 className="w-3.5 h-3.5" />
+                      <span>Launch Simulator</span>
+                    </button>
+                  )}
                 </div>
               </div>
 
@@ -169,21 +171,23 @@ export default function ProjectCards() {
               </div>
 
               {/* Simulator Navigation Promo */}
-              <div className="mt-8 pt-6 border-t border-neutral-800/60 flex items-center justify-between">
-                <span className="text-xs font-mono text-neutral-500">
-                  {selectedProj.id === 'student_notes'
-                    ? '⚡ Explore direct calculator logic and note pages below'
-                    : '🤖 Type pricing questions below to test ML inference'
-                  }
-                </span>
-                <button
-                  onClick={() => triggerScroll(selectedProj.id === 'student_notes' ? 'simulator' : 'chatbot')}
-                  className="flex items-center space-x-1 text-xs text-emerald-400 font-bold hover:text-emerald-300 cursor-pointer"
-                >
-                  <span>Go to Live App</span>
-                  <ArrowRight className="w-3.5 h-3.5 animate-pulse" />
-                </button>
-              </div>
+              {['student_notes', 'price_prediction'].includes(selectedProj.id) && (
+                <div className="mt-8 pt-6 border-t border-neutral-800/60 flex items-center justify-between">
+                  <span className="text-xs font-mono text-neutral-500">
+                    {selectedProj.id === 'student_notes'
+                      ? '⚡ Explore direct calculator logic and note pages below'
+                      : '🤖 Type pricing questions below to test ML inference'
+                    }
+                  </span>
+                  <button
+                    onClick={() => triggerScroll(selectedProj.id === 'student_notes' ? 'simulator' : 'chatbot')}
+                    className="flex items-center space-x-1 text-xs text-emerald-400 font-bold hover:text-emerald-300 cursor-pointer"
+                  >
+                    <span>Go to Live App</span>
+                    <ArrowRight className="w-3.5 h-3.5 animate-pulse" />
+                  </button>
+                </div>
+              )}
 
             </div>
           </div>

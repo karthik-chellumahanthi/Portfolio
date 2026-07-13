@@ -65,7 +65,6 @@ export default function AppSimulator() {
   const [scientificHistory, setScientificHistory] = useState<string>('');
 
   // PDF Search Note Term
-  const [pdfSearchQuery, setPdfSearchQuery] = useState('');
   const [pdfPageCount] = useState(37);
 
   // General navigation helpers

@@ -41,6 +41,22 @@ export const PROJECTS: Project[] = [
     githubUrl: "https://github.com/karthik-chellumahanthi",
   },
   {
+    id: "codementor_ai",
+    title: "CodeMentor AI",
+    subtitle: "100% Offline Local Pipeline (Ollama)",
+    description: "A privacy-first, local coding assistant specifically tailored for Python and Java development, mimicking premium AI interfaces using local Llama 3 inference.",
+    longDescription: "Built with React and FastAPI, CodeMentor AI leverages local Ollama inference alongside a custom Retrieval-Augmented Generation (RAG) pipeline to provide accurate, context-aware programming mentorship. It features a ChatGPT-like responsive UI, persistent chat memory, interactive practice quizzes, and real-time Server-Sent Events (SSE) streaming—all without ever sending data to the cloud.",
+    tags: ["React", "FastAPI", "Ollama", "LangChain", "ChromaDB", "Llama 3"],
+    techStack: ["React + Vite", "Tailwind CSS", "FastAPI", "LangChain", "ChromaDB", "Ollama", "SSE Streaming"],
+    outcomes: [
+      "Engineered a 100% local, privacy-first RAG pipeline using LangChain, ChromaDB, and Ollama without any cloud dependencies.",
+      "Designed a commercial-grade, responsive ChatGPT-like UI supporting themes, Markdown rendering, auto-scrolling, and chat history export.",
+      "Implemented asynchronous SSE streaming to deliver real-time token generation and prevent HTTP timeout errors.",
+      "Developed an interactive Practice Quiz module that dynamically tracks progress and injects system instructions for accurate scoring."
+    ],
+    githubUrl: "https://github.com/karthik-chellumahanthi",
+  },
+  {
     id: "price_prediction",
     title: "Used Car Price Prediction Chatbot",
     subtitle: "AI/ML Conversational Interface",
